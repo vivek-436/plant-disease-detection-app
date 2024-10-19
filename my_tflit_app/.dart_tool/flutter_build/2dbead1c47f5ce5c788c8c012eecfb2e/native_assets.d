@@ -1,0 +1,1 @@
+ D:\\Projects\\image-classification-mango-disease-detection-flutter\\my_tflit_app\\.dart_tool\\flutter_build\\2dbead1c47f5ce5c788c8c012eecfb2e\\native_assets.yaml: 
