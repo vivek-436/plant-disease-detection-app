@@ -1,13 +1,20 @@
 import 'dart:io';
 
-import 'package:agro_gaurdian/utils/colors.dart';
+import 'package:agro_gaurdian/catagory/product.dart';
+import 'package:agro_gaurdian/extrascreen/product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tflite/flutter_tflite.dart';
+
 import 'dart:developer' as devtools;
 import 'package:image_picker/image_picker.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({
+    super.key,
+  });
+
   @override
+  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
@@ -16,10 +23,10 @@ class _HomePageState extends State<HomePage> {
 
   // List of pages to show based on bottom nav selection
   final List<Widget> _pages = [
-    HomeScreen(),
-    ScanScreen(),
-    AlertsScreen(),
-    ProfileScreen(),
+    const HomeScreen(),
+    const ScanScreen(),
+    const AlertsScreen(),
+    const ProfileScreen(),
   ];
 
   @override
@@ -31,10 +38,10 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             // Drawer header with profile
             UserAccountsDrawerHeader(
-              decoration: BoxDecoration(color: Colors.teal),
-              accountName: Text('Vivek'),
-              accountEmail: Text('Edit profile'),
-              currentAccountPicture: CircleAvatar(
+              decoration: const BoxDecoration(color: Colors.teal),
+              accountName: const Text('Vivek'),
+              accountEmail: const Text('Edit profile'),
+              currentAccountPicture: const CircleAvatar(
                 radius: 50,
                 backgroundColor: Colors.teal,
                 backgroundImage: AssetImage(
@@ -84,8 +91,8 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
         title: Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 40),
               child: Text(
                 'AgroGuardian',
                 style: TextStyle(
@@ -95,9 +102,9 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             IconButton(
-              icon: Icon(Icons.notifications, color: Colors.black),
+              icon: const Icon(Icons.notifications, color: Colors.black),
               onPressed: () {
                 // Action for notification button
               },
@@ -117,7 +124,7 @@ class _HomePageState extends State<HomePage> {
             _currentIndex = index; // Update the selected index
           });
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -143,7 +150,7 @@ class _HomePageState extends State<HomePage> {
   ListTile buildDrawerItem(IconData icon, String title, VoidCallback onTap) {
     return ListTile(
       leading: Icon(icon, color: Colors.teal),
-      title: Text(title, style: TextStyle(color: Colors.black)),
+      title: Text(title, style: const TextStyle(color: Colors.black)),
       onTap: onTap,
     );
   }
@@ -151,6 +158,8 @@ class _HomePageState extends State<HomePage> {
 
 // Home Screen Page
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -160,7 +169,7 @@ class HomeScreen extends StatelessWidget {
           TextField(
             decoration: InputDecoration(
               hintText: 'Search any categories',
-              prefixIcon: Icon(Icons.search, color: Colors.black),
+              prefixIcon: const Icon(Icons.search, color: Colors.black),
               filled: true,
               fillColor: Colors.white,
               border: OutlineInputBorder(
@@ -169,19 +178,76 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Expanded(
             child: GridView.count(
               crossAxisCount: 2,
               crossAxisSpacing: 10.0,
               mainAxisSpacing: 10.0,
               children: [
-                buildCategoryCard('Pesticides', 'assets/pesticides.png'),
-                buildCategoryCard('Crops', 'assets/crops.png'),
-                buildCategoryCard('Nursery Plants', 'assets/nursery.png'),
-                buildCategoryCard('Drip Pipelines', 'assets/drip.png'),
-                buildCategoryCard('Poultry', 'assets/poultry.png'),
-                buildCategoryCard('Apiculture', 'assets/apiculture.png'),
+                InkWell(
+                  child:
+                      buildCategoryCard('Pesticides', 'assets/pesticides.png'),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                ProductCard(product: productlist[0])));
+                  },
+                ),
+                InkWell(
+                  child: buildCategoryCard('Crops', 'assets/crops.png'),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                ProductCard(product: productlist[1])));
+                  },
+                ),
+                InkWell(
+                  child:
+                      buildCategoryCard('Nursery Plants', 'assets/nursery.png'),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                ProductCard(product: productlist[2])));
+                  },
+                ),
+                InkWell(
+                  child: buildCategoryCard('Poultry', 'assets/poultry.png'),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                ProductCard(product: productlist[3])));
+                  },
+                ),
+                InkWell(
+                  child:
+                      buildCategoryCard('Apiculture', 'assets/apiculture.png'),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                ProductCard(product: productlist[4])));
+                  },
+                ),
+                InkWell(
+                  child: buildCategoryCard('Drip Pipelines', 'assets/drip.png'),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                ProductCard(product: productlist[5])));
+                  },
+                ),
                 buildCategoryCard('Tractors', 'assets/tractor.png'),
                 buildCategoryCard('Rentals', 'assets/rentals.png'),
               ],
@@ -201,10 +267,10 @@ class HomeScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(iconPath, height: 50), // Replace with your icon paths
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -329,7 +395,7 @@ class _ScanScreenState extends State<ScanScreen> {
               },
               child: const Text('Close'),
             ),
-            TextButton(onPressed: () {}, child: Text('Remedy'))
+            TextButton(onPressed: () {}, child: const Text('Remedy'))
           ],
         );
       },
@@ -488,9 +554,11 @@ class _ScanScreenState extends State<ScanScreen> {
 
 // Alerts Screen Page
 class AlertsScreen extends StatelessWidget {
+  const AlertsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text(
         'Alerts Screen',
         style: TextStyle(fontSize: 24),
@@ -501,7 +569,10 @@ class AlertsScreen extends StatelessWidget {
 
 // Profile Screen Page
 class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
@@ -519,8 +590,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 10),
-            CircleAvatar(
+            const SizedBox(height: 10),
+            const CircleAvatar(
               radius: 50,
               backgroundColor: Colors.teal,
               backgroundImage: AssetImage(
@@ -539,8 +610,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               'Vivek Maurya',
               style: TextStyle(
                 fontSize: 22,
@@ -548,9 +619,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             // Mobile Number (non-editable)
-            ListTile(
+            const ListTile(
               title: Text('Mobile Number',
                   style: TextStyle(fontSize: 12, color: Colors.grey)),
               subtitle: Text(
@@ -558,35 +629,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             // Email (Editable)
             ListTile(
-              title: Text('Email',
+              title: const Text('Email',
                   style: TextStyle(fontSize: 12, color: Colors.grey)),
               subtitle: TextField(
                 controller: emailController,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                decoration: InputDecoration(
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                decoration: const InputDecoration(
                   suffixIcon: Icon(Icons.edit, color: Colors.teal),
                   border: InputBorder.none,
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             // Address (Editable)
             ListTile(
-              title: Text('Address',
+              title: const Text('Address',
                   style: TextStyle(fontSize: 12, color: Colors.grey)),
               subtitle: TextField(
                 controller: addressController,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                decoration: InputDecoration(
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                decoration: const InputDecoration(
                   suffixIcon: Icon(Icons.edit, color: Colors.teal),
                   border: InputBorder.none,
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Update Profile Button
             ElevatedButton(
               onPressed: () {
@@ -594,11 +667,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.teal,
-                padding: EdgeInsets.symmetric(horizontal: 80, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 80, vertical: 10),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
               ),
-              child: Text('Update Profile',
+              child: const Text('Update Profile',
                   style: TextStyle(fontSize: 16, color: Colors.white)),
             ),
 
@@ -615,18 +689,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
             //     // Implement Logout action
             //   },
             // ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Help and Version
             TextButton.icon(
               onPressed: () {
                 // Implement Help action
               },
-              icon: Icon(Icons.help_outline, color: Colors.blue),
-              label: Text('Need Help?', style: TextStyle(color: Colors.blue)),
+              icon: const Icon(Icons.help_outline, color: Colors.blue),
+              label: const Text('Need Help?',
+                  style: TextStyle(color: Colors.blue)),
             ),
-            SizedBox(height: 5),
-            Text('Version 1.9.1', style: TextStyle(color: Colors.grey)),
-            SizedBox(height: 20),
+            const SizedBox(height: 5),
+            const Text('Version 1.9.1', style: TextStyle(color: Colors.grey)),
+            const SizedBox(height: 20),
           ],
         ),
       ),

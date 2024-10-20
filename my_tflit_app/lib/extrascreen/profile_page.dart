@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
+
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
@@ -19,7 +21,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         backgroundColor: Colors.teal[50],
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -30,8 +32,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 10),
-            CircleAvatar(
+            const SizedBox(height: 10),
+            const CircleAvatar(
               radius: 50,
               backgroundColor: Colors.teal,
               backgroundImage: AssetImage(
@@ -50,8 +52,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               'Vivek Maurya',
               style: TextStyle(
                 fontSize: 22,
@@ -59,9 +61,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Mobile Number (non-editable)
-            ListTile(
+            const ListTile(
               title: Text('Mobile Number',
                   style: TextStyle(fontSize: 14, color: Colors.grey)),
               subtitle: Text(
@@ -69,35 +71,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             // Email (Editable)
             ListTile(
-              title: Text('Email',
+              title: const Text('Email',
                   style: TextStyle(fontSize: 14, color: Colors.grey)),
               subtitle: TextField(
                 controller: emailController,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                decoration: InputDecoration(
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                decoration: const InputDecoration(
                   suffixIcon: Icon(Icons.edit, color: Colors.teal),
                   border: InputBorder.none,
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             // Address (Editable)
             ListTile(
-              title: Text('Address',
+              title: const Text('Address',
                   style: TextStyle(fontSize: 14, color: Colors.grey)),
               subtitle: TextField(
                 controller: addressController,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                decoration: InputDecoration(
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                decoration: const InputDecoration(
                   suffixIcon: Icon(Icons.edit, color: Colors.teal),
                   border: InputBorder.none,
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Update Profile Button
             ElevatedButton(
               onPressed: () {
@@ -105,34 +109,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.teal,
-                padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
               ),
-              child: Text('Update Profile', style: TextStyle(fontSize: 18)),
+              child:
+                  const Text('Update Profile', style: TextStyle(fontSize: 18)),
             ),
-            Spacer(),
+            const Spacer(),
             // Logout Button
             ListTile(
-              leading: Icon(Icons.logout, color: Colors.teal),
-              title: Text('Logout',
+              leading: const Icon(Icons.logout, color: Colors.teal),
+              title: const Text('Logout',
                   style: TextStyle(color: Colors.teal, fontSize: 18)),
               onTap: () {
                 // Implement Logout action
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Help and Version
             TextButton.icon(
               onPressed: () {
                 // Implement Help action
               },
-              icon: Icon(Icons.help_outline, color: Colors.blue),
-              label: Text('Need Help?', style: TextStyle(color: Colors.blue)),
+              icon: const Icon(Icons.help_outline, color: Colors.blue),
+              label: const Text('Need Help?',
+                  style: TextStyle(color: Colors.blue)),
             ),
-            SizedBox(height: 5),
-            Text('Version 1.9.1', style: TextStyle(color: Colors.grey)),
-            SizedBox(height: 20),
+            const SizedBox(height: 5),
+            const Text('Version 1.9.1', style: TextStyle(color: Colors.grey)),
+            const SizedBox(height: 20),
           ],
         ),
       ),

@@ -4,7 +4,7 @@
             "outputFile": "com.example.agro_gaurdian.app-mergeDebugResources-25:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "D:\\Projects\\image-classification-mango-disease-detection-flutter\\my_tflit_app\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "E:\\Project\\plant-disease-detection-app\\my_tflit_app\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

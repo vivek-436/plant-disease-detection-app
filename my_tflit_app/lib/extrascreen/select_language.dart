@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SelectLanguage extends StatelessWidget {
+  const SelectLanguage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,32 +16,32 @@ class SelectLanguage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text('hello'.tr), // Translated text
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 // Switch to English
-                var locale = Locale('en', 'US');
+                var locale = const Locale('en', 'US');
                 Get.updateLocale(locale);
               },
-              child: Text('Switch to English'),
+              child: const Text('Switch to English'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 // Switch to Hindi
-                var locale = Locale('hi', 'IN');
+                var locale = const Locale('hi', 'IN');
                 Get.updateLocale(locale);
               },
-              child: Text('स्विच करें हिंदी में'),
+              child: const Text('स्विच करें हिंदी में'),
             ),
             ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => MyGetpage()));
+                          builder: (context) => const MyGetpage()));
                 },
-                child: Text(
+                child: const Text(
                   'Next',
                   style: TextStyle(color: Colors.white),
                 ))
