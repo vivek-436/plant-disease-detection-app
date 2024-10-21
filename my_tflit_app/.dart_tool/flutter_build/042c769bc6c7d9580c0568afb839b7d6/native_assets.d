@@ -1,0 +1,1 @@
+ E:\\Project\\plant-disease-detection-app\\my_tflit_app\\.dart_tool\\flutter_build\\042c769bc6c7d9580c0568afb839b7d6\\native_assets.yaml: 

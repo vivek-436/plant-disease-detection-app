@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:agro_gaurdian/Screens/detail_page.dart';
 import 'package:agro_gaurdian/catagory/product.dart';
 import 'package:agro_gaurdian/extrascreen/product_page.dart';
 import 'package:flutter/material.dart';
@@ -395,7 +396,15 @@ class _ScanScreenState extends State<ScanScreen> {
               },
               child: const Text('Close'),
             ),
-            TextButton(onPressed: () {}, child: const Text('Remedy'))
+            TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Detail(),
+                      ));
+                },
+                child: const Text('Remedy'))
           ],
         );
       },

@@ -36,12 +36,8 @@ class ProductCard extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SizedBox(
-                          height: 120,
-                          width: 150,
-                          child: Image.asset(
-                            product.image,
-                          ),
+                        Container(
+                          child: Image.asset(product.image),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 20, top: 20),
