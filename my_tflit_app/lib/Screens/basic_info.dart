@@ -1,4 +1,4 @@
-import 'package:agro_gaurdian/Screens/scanscreen.dart';
+import 'package:agro_gaurdian/Screens/scannerscreen.dart';
 import 'package:flutter/material.dart';
 
 class BasicInfo extends StatefulWidget {
@@ -49,7 +49,7 @@ class _BasicInfoState extends State<BasicInfo> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ScanScreen(),
+                        builder: (context) => ScannerScreen(),
                       ));
                 },
                 child: Text('Submit'),

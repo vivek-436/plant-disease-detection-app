@@ -1,4 +1,4 @@
-import 'package:agro_gaurdian/Screens/scanscreen.dart';
+import 'package:agro_gaurdian/Screens/scannerscreen.dart';
 import 'package:agro_gaurdian/catagory/product.dart';
 
 import 'package:agro_gaurdian/homepage.dart';

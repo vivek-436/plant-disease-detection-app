@@ -1,7 +1,9 @@
 import 'dart:io';
 
+import 'package:agro_gaurdian/Screens/previous_scan.dart';
+import 'package:agro_gaurdian/Screens/scannerscreen.dart';
 import 'package:agro_gaurdian/catagory/product.dart';
-import 'package:agro_gaurdian/extrascreen/product_page.dart';
+import 'package:agro_gaurdian/Screens/product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tflite/flutter_tflite.dart';
 
@@ -189,63 +191,45 @@ class HomeScreen extends StatelessWidget {
                   child:
                       buildCategoryCard('Pesticides', 'assets/pesticides.png'),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                ProductCard(product: productlist[0])));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ProductCard()));
                   },
                 ),
                 InkWell(
                   child: buildCategoryCard('Crops', 'assets/crops.png'),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                ProductCard(product: productlist[1])));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ProductCard()));
                   },
                 ),
                 InkWell(
                   child:
                       buildCategoryCard('Nursery Plants', 'assets/nursery.png'),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                ProductCard(product: productlist[2])));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ProductCard()));
                   },
                 ),
                 InkWell(
                   child: buildCategoryCard('Poultry', 'assets/poultry.png'),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                ProductCard(product: productlist[3])));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ProductCard()));
                   },
                 ),
                 InkWell(
                   child:
                       buildCategoryCard('Apiculture', 'assets/apiculture.png'),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                ProductCard(product: productlist[4])));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ProductCard()));
                   },
                 ),
                 InkWell(
                   child: buildCategoryCard('Drip Pipelines', 'assets/drip.png'),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                ProductCard(product: productlist[5])));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ProductCard()));
                   },
                 ),
                 buildCategoryCard('Tractors', 'assets/tractor.png'),
@@ -283,265 +267,193 @@ class HomeScreen extends StatelessWidget {
 }
 
 // Scan Screen Page
-class ScanScreen extends StatefulWidget {
-  const ScanScreen({super.key});
-
-  @override
-  State<ScanScreen> createState() => _ScanScreenState();
-}
-
-class _ScanScreenState extends State<ScanScreen> {
-  File? filePath;
-  String label = '';
-  double confidence = 0.0;
-  String Description = '';
-
-  Future<void> _tfLteInit() async {
-    String? res = await Tflite.loadModel(
-        model: "assets/model_unquant.tflite",
-        labels: "assets/labels.txt",
-        numThreads: 1, // defaults to 1
-        isAsset:
-            true, // defaults to true, set to false to load resources outside assets
-        useGpuDelegate:
-            false // defaults to false, set to true to use GPU delegate
-        );
-  }
-
-  pickImageGallery() async {
-    final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-
-    if (image == null) return;
-
-    var imageMap = File(image.path);
-
-    setState(() {
-      filePath = imageMap;
-    });
-
-    var recognitions = await Tflite.runModelOnImage(
-        path: image.path,
-        imageMean: 0.0,
-        imageStd: 255.0,
-        numResults: 2,
-        threshold: 0.2,
-        asynch: true);
-
-    if (recognitions == null) {
-      devtools.log("recognitions is Null");
-      return;
-    }
-    devtools.log(recognitions.toString());
-    setState(() {
-      Description = recognitions[0]['Description'].toString();
-      confidence = (recognitions[0]['confidence'] * 100);
-      label = recognitions[0]['label'].toString();
-    });
-  }
-
-  pickImageCamera() async {
-    final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: ImageSource.camera);
-
-    if (image == null) return;
-
-    var imageMap = File(image.path);
-
-    setState(() {
-      filePath = imageMap;
-    });
-
-    var recognitions = await Tflite.runModelOnImage(
-        path: image.path,
-        imageMean: 0.0,
-        imageStd: 255.0,
-        numResults: 2,
-        threshold: 0.2,
-        asynch: true);
-
-    if (recognitions == null) {
-      devtools.log("recognitions is Null");
-      return;
-    }
-    devtools.log(recognitions.toString());
-    setState(() {
-      confidence = (recognitions[0]['confidence'] * 100);
-      label = recognitions[0]['label'].toString();
-    });
-  }
-
-  // Function to show details of the detected disease
-  void _showDiseaseDetails(
-      String disease, double accuracy, String Description) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('$disease Details'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text("Disease Name: $disease"),
-              Text("Detection Confidence: ${accuracy.toStringAsFixed(0)}%"),
-              Text("Description: $Description"),
-              // Add more disease details here
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Close the dialog
-              },
-              child: const Text('Close'),
-            ),
-            TextButton(onPressed: () {}, child: const Text('Remedy'))
-          ],
-        );
-      },
-    );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    Tflite.close();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _tfLteInit();
-  }
+class ScanScreen extends StatelessWidget {
+  const ScanScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: SingleChildScrollView(
-        child: Center(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 12,
+              const SizedBox(height: 20),
+              Center(
+                child: Image.asset(
+                  'assets/upload_image.png',
+                  height: 180,
+                ),
               ),
-              Card(
-                color: Colors.teal,
-                elevation: 20,
-                clipBehavior: Clip.hardEdge,
-                child: SizedBox(
-                  width: 300,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 18,
+              const SizedBox(height: 20),
+              Center(
+                child: RichText(
+                  text: const TextSpan(
+                    text: 'Upload ',
+                    style: TextStyle(
+                      color: Colors.teal,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                    children: [
+                      TextSpan(
+                        text:
+                            'your crop photo to identify diseases and receive tailored solutions instantly.',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.normal,
                         ),
-                        Container(
-                          height: 280,
-                          width: 280,
-                          decoration: BoxDecoration(
-                            color: Colors.teal,
-                            borderRadius: BorderRadius.circular(12),
-                            image: const DecorationImage(
-                              image: AssetImage('assets/upload.jpg'),
+                      ),
+                    ],
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const SizedBox(height: 30),
+              Container(
+                padding: const EdgeInsets.all(16.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        Icon(Icons.crop, color: Colors.orange, size: 40),
+                        Icon(Icons.receipt, color: Colors.blue, size: 40),
+                        Icon(Icons.medical_services,
+                            color: Colors.green, size: 40),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text('Scan', style: TextStyle(fontSize: 16)),
+                        SizedBox(
+                            // width: 10,
                             ),
+                        Text('Get Report', style: TextStyle(fontSize: 16)),
+                        Text('Get a Cure', style: TextStyle(fontSize: 16)),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton.icon(
+                      onPressed: () {
+                        // Handle take a picture action
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ScannerScreen()));
+                      },
+                      icon: const Icon(Icons.camera_alt),
+                      label: const Text(
+                        "Upload picture",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.teal,
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 12, horizontal: 24),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "Previous scans",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      // Handle view all scans
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PreviousScan()));
+                    },
+                    child: const Text(
+                      "View all",
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Container(
+                height: 80,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        'assets/plant_image.png',
+                        height: 60,
+                        width: 60,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text(
+                          "23 Jan",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
                           ),
-                          child: filePath == null
-                              ? const Text('')
-                              : Image.file(
-                                  filePath!,
-                                  fit: BoxFit.fill,
-                                ),
                         ),
-                        const SizedBox(
-                          height: 12,
+                        Text(
+                          "Healthy",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.green,
+                          ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              Text(
-                                label,
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 12,
-                              ),
-                              if (label.isNotEmpty && confidence > 0)
-                                Text(
-                                  "The Accuracy is ${confidence.toStringAsFixed(0)}%",
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                  ),
-                                ),
-                              const SizedBox(
-                                height: 12,
-                              ),
-                              // Show "View Details" button only when an image is detected
-                              if (label.isNotEmpty && confidence > 0)
-                                ElevatedButton(
-                                  onPressed: () {
-                                    _showDiseaseDetails(
-                                        label, confidence, Description);
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 30, vertical: 10),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(13),
-                                    ),
-                                    foregroundColor: Colors.black,
-                                  ),
-                                  child: const Text(
-                                    "View Details",
-                                  ),
-                                ),
-                            ],
+                        Text(
+                          "Complete",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey,
                           ),
                         ),
                       ],
                     ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  pickImageCamera();
-                },
-                style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 10),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(13),
+                    const Spacer(),
+                    IconButton(
+                      icon: const Icon(Icons.arrow_forward_ios,
+                          color: Colors.grey),
+                      onPressed: () {
+                        // Handle view details of this scan
+                      },
                     ),
-                    foregroundColor: Colors.black),
-                child: const Text(
-                  "Take a Photo",
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  pickImageGallery();
-                },
-                style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 10),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(13),
-                    ),
-                    foregroundColor: Colors.black),
-                child: const Text(
-                  "Pick from gallery",
+                  ],
                 ),
               ),
             ],
@@ -550,6 +462,12 @@ class _ScanScreenState extends State<ScanScreen> {
       ),
     );
   }
+}
+
+void main() {
+  runApp(const MaterialApp(
+    home: ScanScreen(),
+  ));
 }
 
 // Alerts Screen Page

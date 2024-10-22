@@ -18,7 +18,7 @@ final List<Product> productlist = [
   Product(
     239,
     title: "Replex",
-    image: 'assets/products/a1.png',
+    image: 'assets/a.png',
     price: 150,
     rating: 4,
   ),

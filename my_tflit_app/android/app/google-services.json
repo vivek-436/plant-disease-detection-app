@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "507888958671",
+    "project_id": "plant-disease-detection-45",
+    "storage_bucket": "plant-disease-detection-45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:507888958671:android:76d3c91436044eac8d8bba",
+        "android_client_info": {
+          "package_name": "com.example.agro_gaurdian"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAItJVbE3S1Vsi2paNrFVuamc-RhUNqoJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

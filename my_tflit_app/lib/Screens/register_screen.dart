@@ -1,6 +1,6 @@
 import 'package:agro_gaurdian/Screens/basic_info.dart';
 import 'package:agro_gaurdian/Screens/login_screen.dart';
-import 'package:agro_gaurdian/Screens/scanscreen.dart';
+import 'package:agro_gaurdian/Screens/scannerscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
