@@ -10,7 +10,7 @@ class PreviousScan extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.teal[50],
         elevation: 0,
-        title: Row(
+        title: const Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
@@ -42,10 +42,10 @@ class PreviousScan extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 10),
-            Column(
+            const Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text(
                   "23 Jan",
                   style: TextStyle(

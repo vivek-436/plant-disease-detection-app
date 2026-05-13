@@ -1,0 +1,98 @@
+Analyzing my_tflit_app...                                       
+
+   info - Constructors for public widgets should have a named 'key' parameter - lib\Screens\basic_info.dart:4:7 - use_key_in_widget_constructors
+   info - Invalid use of a private type in a public API - lib\Screens\basic_info.dart:6:3 - library_private_types_in_public_api
+   info - Use 'const' with the constructor to improve performance - lib\Screens\basic_info.dart:25:16 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\basic_info.dart:41:15 - prefer_const_constructors
+   info - Don't invoke 'print' in production code - lib\Screens\basic_info.dart:46:21 - avoid_print
+   info - Unnecessary empty statement - lib\Screens\basic_info.dart:48:19 - empty_statements
+   info - Use 'const' with the constructor to improve performance - lib\Screens\basic_info.dart:52:47 - prefer_const_constructors
+   info - The 'child' argument should be last in widget constructor invocations - lib\Screens\basic_info.dart:55:17 - sort_child_properties_last
+   info - Use 'const' with the constructor to improve performance - lib\Screens\basic_info.dart:55:24 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\basic_info.dart:74:19 - prefer_const_constructors
+   info - Constructors for public widgets should have a named 'key' parameter - lib\Screens\chatbot_screen.dart:6:7 - use_key_in_widget_constructors
+   info - Invalid use of a private type in a public API - lib\Screens\chatbot_screen.dart:8:3 - library_private_types_in_public_api
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:57:16 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:59:18 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:71:24 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:78:32 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:79:31 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:84:30 - prefer_const_constructors
+   info - Use 'const' literals as arguments to constructors of '@immutable' classes - lib\Screens\chatbot_screen.dart:86:35 - prefer_const_literals_to_create_immutables
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:87:27 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:90:27 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:91:27 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:93:36 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:108:30 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:109:29 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:113:34 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:114:35 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:116:38 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:118:52 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:123:30 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:130:11 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:148:17 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\chatbot_screen.dart:158:26 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\home_screen.dart:38:65 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\home_screen.dart:45:65 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\home_screen.dart:53:65 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\home_screen.dart:60:65 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\home_screen.dart:68:65 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\home_screen.dart:75:65 - prefer_const_constructors
+   info - Constructors for public widgets should have a named 'key' parameter - lib\Screens\login_screen.dart:5:7 - use_key_in_widget_constructors
+   info - Invalid use of a private type in a public API - lib\Screens\login_screen.dart:7:3 - library_private_types_in_public_api
+   info - The 'child' argument should be last in widget constructor invocations - lib\Screens\login_screen.dart:83:17 - sort_child_properties_last
+   info - Use 'const' with the constructor to improve performance - lib\Screens\previous_scan.dart:13:16 - prefer_const_constructors
+   info - Use 'const' literals as arguments to constructors of '@immutable' classes - lib\Screens\previous_scan.dart:15:21 - prefer_const_literals_to_create_immutables
+   info - Use 'const' with the constructor to improve performance - lib\Screens\previous_scan.dart:16:13 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\previous_scan.dart:18:22 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\previous_scan.dart:45:13 - prefer_const_constructors
+   info - Unnecessary escape in string literal - lib\Screens\product_page.dart:417:23 - unnecessary_string_escapes
+   info - The 'child' argument should be last in widget constructor invocations - lib\Screens\product_page.dart:425:15 - sort_child_properties_last
+   info - Constructors for public widgets should have a named 'key' parameter - lib\Screens\register_screen.dart:6:7 - use_key_in_widget_constructors
+   info - Invalid use of a private type in a public API - lib\Screens\register_screen.dart:8:3 - library_private_types_in_public_api
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:22:15 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:23:15 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:25:24 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:30:15 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:35:15 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:36:15 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:38:24 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:40:15 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:41:15 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:43:24 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:45:15 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:47:29 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:49:27 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:50:33 - prefer_const_constructors
+   info - Don't invoke 'print' in production code - lib\Screens\register_screen.dart:55:19 - avoid_print
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:58:15 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:71:30 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:74:26 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:76:28 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:80:15 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:87:24 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\register_screen.dart:89:26 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\scan_screen.dart:59:21 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\scan_screen.dart:69:21 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\scan_screen.dart:90:55 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\scan_screen.dart:126:53 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\scan_screen.dart:157:21 - prefer_const_constructors
+   info - The variable name 'Description' isn't a lowerCamelCase identifier - lib\Screens\scannerscreen.dart:20:10 - non_constant_identifier_names
+warning - The value of the local variable 'res' isn't used - lib\Screens\scannerscreen.dart:23:13 - unused_local_variable
+   info - The variable name 'Description' isn't a lowerCamelCase identifier - lib\Screens\scannerscreen.dart:99:47 - non_constant_identifier_names
+   info - Use 'const' with the constructor to improve performance - lib\Screens\scannerscreen.dart:146:16 - prefer_const_constructors
+   info - Use 'const' literals as arguments to constructors of '@immutable' classes - lib\Screens\scannerscreen.dart:148:21 - prefer_const_literals_to_create_immutables
+   info - Use 'const' with the constructor to improve performance - lib\Screens\scannerscreen.dart:149:13 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\Screens\scannerscreen.dart:151:22 - prefer_const_constructors
+   info - Invalid use of a private type in a public API - lib\Screens\splash_screen.dart:12:3 - library_private_types_in_public_api
+   info - The file name 'Scanner_screen.dart' isn't a lower_case_with_underscores identifier - lib\extrascreen\Scanner_screen.dart:1:1 - file_names
+   info - Use 'const' with the constructor to improve performance - lib\extrascreen\Scanner_screen.dart:76:21 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\extrascreen\Scanner_screen.dart:86:21 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\extrascreen\Scanner_screen.dart:157:21 - prefer_const_constructors
+   info - Invalid use of a private type in a public API - lib\extrascreen\profile_page.dart:7:3 - library_private_types_in_public_api
+   info - Constructors for public widgets should have a named 'key' parameter - lib\main.dart:11:7 - use_key_in_widget_constructors
+   info - Use 'const' with the constructor to improve performance - lib\main.dart:17:15 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\main.dart:18:23 - prefer_const_constructors
+   info - Use 'const' with the constructor to improve performance - lib\main.dart:20:13 - prefer_const_constructors
+

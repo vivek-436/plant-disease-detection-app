@@ -1,8 +1,6 @@
 import 'dart:async';
 
-import 'package:agro_gaurdian/extrascreen/get_start.dart';
 import 'package:agro_gaurdian/Screens/register_screen.dart';
-import 'package:agro_gaurdian/extrascreen/select_language.dart';
 import 'package:agro_gaurdian/utils/colors.dart';
 
 import 'package:flutter/material.dart';
@@ -23,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => RegistrationScreen(),
+          builder: (context) => const RegistrationScreen(),
         ),
       );
     });

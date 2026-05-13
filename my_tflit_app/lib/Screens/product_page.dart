@@ -414,7 +414,7 @@ class ProductDetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              'Price: \Rs${product.price}',
+              'Price: Rs${product.price}',
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 24),
@@ -422,12 +422,12 @@ class ProductDetailScreen extends StatelessWidget {
               onPressed: () {
                 // Add to cart logic
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.teal,
+              ),
               child: const Text(
                 'Add to Cart',
                 style: TextStyle(color: Colors.white),
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal,
               ),
             ),
           ],

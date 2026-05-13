@@ -57,7 +57,7 @@ class MyGetpage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => RegistrationScreen(),
+                          builder: (context) => const RegistrationScreen(),
                         ));
                   },
                 ),

@@ -17,10 +17,10 @@ class _ScannerScreenState extends State<ScannerScreen> {
   File? filePath;
   String label = '';
   double confidence = 0.0;
-  String Description = '';
+  String description = '';
 
   Future<void> _tfLteInit() async {
-    String? res = await Tflite.loadModel(
+    await Tflite.loadModel(
         model: "assets/model_unquant.tflite",
         labels: "assets/labels.txt",
         numThreads: 1, // defaults to 1
@@ -57,7 +57,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
     }
     devtools.log(recognitions.toString());
     setState(() {
-      Description = recognitions[0]['Description'].toString();
+      description = recognitions[0]['Description'].toString();
       confidence = (recognitions[0]['confidence'] * 100);
       label = recognitions[0]['label'].toString();
     });
@@ -96,7 +96,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
 
   // Function to show details of the detected disease
   void _showDiseaseDetails(
-      String disease, double accuracy, String Description) {
+      String disease, double accuracy, String description) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -107,7 +107,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
             children: [
               Text("Disease Name: $disease"),
               Text("Detection Confidence: ${accuracy.toStringAsFixed(0)}%"),
-              Text("Description: $Description"),
+              Text("Description: $description"),
               // Add more disease details here
             ],
           ),
@@ -143,7 +143,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
       appBar: AppBar(
         backgroundColor: Colors.teal[50],
         elevation: 0,
-        title: Row(
+        title: const Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
@@ -226,7 +226,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
                                 ElevatedButton(
                                   onPressed: () {
                                     _showDiseaseDetails(
-                                        label, confidence, Description);
+                                        label, confidence, description);
                                   },
                                   style: ElevatedButton.styleFrom(
                                     padding: const EdgeInsets.symmetric(

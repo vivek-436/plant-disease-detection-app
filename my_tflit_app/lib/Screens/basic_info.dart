@@ -2,6 +2,8 @@ import 'package:agro_gaurdian/Screens/scannerscreen.dart';
 import 'package:flutter/material.dart';
 
 class BasicInfo extends StatefulWidget {
+  const BasicInfo({super.key});
+
   @override
   _BasicInfoState createState() => _BasicInfoState();
 }
@@ -22,7 +24,7 @@ class _BasicInfoState extends State<BasicInfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Enter your details !!'),
+        title: const Text('Enter your details !!'),
         backgroundColor: Colors.teal,
       ),
       body: Padding(
@@ -38,22 +40,21 @@ class _BasicInfoState extends State<BasicInfo> {
               buildTextField('District*', 'Your district', districtController),
               buildTextField('Taluka*', 'Your taluka', talukaController),
               buildTextField('Village*', 'Your village', villageController),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     // Process data
                     print("Form Submitted");
                   }
-                  ;
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ScannerScreen(),
+                        builder: (context) => const ScannerScreen(),
                       ));
                 },
-                child: Text('Submit'),
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
+                child: const Text('Submit'),
               ),
             ],
           ),
@@ -71,7 +72,7 @@ class _BasicInfoState extends State<BasicInfo> {
         decoration: InputDecoration(
           labelText: labelText,
           hintText: hintText,
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {

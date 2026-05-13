@@ -1,32 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:agro_gaurdian/Screens/previous_scan.dart';
+import 'package:agro_gaurdian/Screens/scannerscreen.dart';
 
-class AgroGuardianHomeScreen extends StatelessWidget {
-  const AgroGuardianHomeScreen({Key? key}) : super(key: key);
+// Scan Screen Page
+class ScanScreen extends StatelessWidget {
+  const ScanScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            // Handle back action
-          },
-        ),
-        title: const Text(
-          "AgroGuardian",
-          style: TextStyle(
-            color: Colors.green,
-            fontFamily: 'Roboto',
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
-      ),
+      backgroundColor: Colors.transparent,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: SingleChildScrollView(
@@ -37,7 +20,7 @@ class AgroGuardianHomeScreen extends StatelessWidget {
               Center(
                 child: Image.asset(
                   'assets/upload_image.png',
-                  height: 150,
+                  height: 180,
                 ),
               ),
               const SizedBox(height: 20),
@@ -46,7 +29,7 @@ class AgroGuardianHomeScreen extends StatelessWidget {
                   text: const TextSpan(
                     text: 'Upload ',
                     style: TextStyle(
-                      color: Colors.green,
+                      color: Colors.teal,
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     ),
@@ -68,7 +51,7 @@ class AgroGuardianHomeScreen extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
-                  color: Colors.grey[200],
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Column(
@@ -86,7 +69,13 @@ class AgroGuardianHomeScreen extends StatelessWidget {
                     const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
+                        SizedBox(
+                          width: 5,
+                        ),
                         Text('Scan', style: TextStyle(fontSize: 16)),
+                        SizedBox(
+                            // width: 10,
+                            ),
                         Text('Get Report', style: TextStyle(fontSize: 16)),
                         Text('Get a Cure', style: TextStyle(fontSize: 16)),
                       ],
@@ -95,11 +84,18 @@ class AgroGuardianHomeScreen extends StatelessWidget {
                     ElevatedButton.icon(
                       onPressed: () {
                         // Handle take a picture action
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ScannerScreen()));
                       },
                       icon: const Icon(Icons.camera_alt),
-                      label: const Text("Take a picture"),
+                      label: const Text(
+                        "Upload picture",
+                        style: TextStyle(color: Colors.white),
+                      ),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
+                        backgroundColor: Colors.teal,
                         padding: const EdgeInsets.symmetric(
                             vertical: 12, horizontal: 24),
                         shape: RoundedRectangleBorder(
@@ -124,6 +120,10 @@ class AgroGuardianHomeScreen extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       // Handle view all scans
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const PreviousScan()));
                     },
                     child: const Text(
                       "View all",
@@ -139,7 +139,7 @@ class AgroGuardianHomeScreen extends StatelessWidget {
               Container(
                 height: 80,
                 decoration: BoxDecoration(
-                  color: Colors.grey[200],
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Row(
@@ -147,7 +147,7 @@ class AgroGuardianHomeScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Image.asset(
-                        'assets/plant_image.png', 
+                        'assets/plant_image.png',
                         height: 60,
                         width: 60,
                         fit: BoxFit.cover,
@@ -198,10 +198,4 @@ class AgroGuardianHomeScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-void main() {
-  runApp(const MaterialApp(
-    home: AgroGuardianHomeScreen(),
-  ));
 }

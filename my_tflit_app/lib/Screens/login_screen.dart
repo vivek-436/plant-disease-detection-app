@@ -1,10 +1,10 @@
-import 'package:agro_gaurdian/Screens/scannerscreen.dart';
-import 'package:agro_gaurdian/catagory/product.dart';
 
 import 'package:agro_gaurdian/homepage.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -82,7 +82,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () {
                   // Generate OTP action
                 },
-                child: const Text('Generate OTP'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
                   padding: const EdgeInsets.symmetric(vertical: 14.0),
@@ -91,6 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
+                child: const Text('Generate OTP'),
               ),
               const SizedBox(height: 20),
               const Row(
