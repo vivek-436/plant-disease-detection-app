@@ -7,7 +7,7 @@ class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
 
   @override
-  _RegistrationScreenState createState() => _RegistrationScreenState();
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
@@ -53,9 +53,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ),
                 ),
                 initialCountryCode: 'IN', // Default country code
-                onChanged: (phone) {
-                  print(phone.completeNumber);
-                },
+                onChanged: (phone) {},
               ),
               const SizedBox(height: 20),
               SizedBox(
@@ -83,8 +81,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               TextButton(
                 onPressed: () {
                   // Action for login here
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const LoginScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()));
                 },
                 child: const Text(
                   'Already a User? Login here',

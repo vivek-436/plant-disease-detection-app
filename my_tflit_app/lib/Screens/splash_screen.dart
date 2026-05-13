@@ -9,15 +9,18 @@ class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  Timer? _navigationTimer;
+
   @override
   void initState() {
     super.initState();
     // Simulate a delay and then navigate to the home screen
-    Timer(const Duration(seconds: 3), () {
+    _navigationTimer = Timer(const Duration(seconds: 3), () {
+      if (!mounted) return;
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -25,6 +28,12 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       );
     });
+  }
+
+  @override
+  void dispose() {
+    _navigationTimer?.cancel();
+    super.dispose();
   }
 
   @override

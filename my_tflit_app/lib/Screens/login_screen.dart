@@ -1,4 +1,3 @@
-
 import 'package:agro_gaurdian/homepage.dart';
 import 'package:flutter/material.dart';
 
@@ -6,11 +5,17 @@ class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController mobileController = TextEditingController();
+  final TextEditingController mobileController = TextEditingController();
+
+  @override
+  void dispose() {
+    mobileController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -5,20 +5,32 @@ class BasicInfo extends StatefulWidget {
   const BasicInfo({super.key});
 
   @override
-  _BasicInfoState createState() => _BasicInfoState();
+  State<BasicInfo> createState() => _BasicInfoState();
 }
 
 class _BasicInfoState extends State<BasicInfo> {
   final _formKey = GlobalKey<FormState>();
 
   // Form fields controllers
-  TextEditingController nameController = TextEditingController();
-  TextEditingController surnameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController stateController = TextEditingController();
-  TextEditingController districtController = TextEditingController();
-  TextEditingController talukaController = TextEditingController();
-  TextEditingController villageController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController surnameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController stateController = TextEditingController();
+  final TextEditingController districtController = TextEditingController();
+  final TextEditingController talukaController = TextEditingController();
+  final TextEditingController villageController = TextEditingController();
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    surnameController.dispose();
+    emailController.dispose();
+    stateController.dispose();
+    districtController.dispose();
+    talukaController.dispose();
+    villageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,14 +56,12 @@ class _BasicInfoState extends State<BasicInfo> {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    // Process data
-                    print("Form Submitted");
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ScannerScreen(),
+                        ));
                   }
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ScannerScreen(),
-                      ));
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
                 child: const Text('Submit'),

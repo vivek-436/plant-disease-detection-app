@@ -7,7 +7,7 @@ class ChatBotScreen extends StatefulWidget {
   const ChatBotScreen({super.key});
 
   @override
-  _ChatBotScreenState createState() => _ChatBotScreenState();
+  State<ChatBotScreen> createState() => _ChatBotScreenState();
 }
 
 class _ChatBotScreenState extends State<ChatBotScreen> {
@@ -15,14 +15,30 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
   final List<Map<String, String>> _messages = [];
   bool _isLoading = false;
 
-  final GenerativeModel _model = GenerativeModel(
+  static const String _apiKey = String.fromEnvironment('GEMINI_API_KEY');
+  late final GenerativeModel _model = GenerativeModel(
     model: 'gemini-1.5-flash-latest',
-    apiKey:
-        'AIzaSyAOlWtBMZy9CMZiyBBCrwzTO0nsgulcKZU', // Replace with your API Key
+    apiKey: _apiKey,
   );
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   Future<void> _sendMessage(String prompt) async {
     if (prompt.trim().isEmpty) return;
+
+    if (_apiKey.isEmpty) {
+      setState(() {
+        _messages.add({
+          'bot':
+              'Chatbot is not configured. Run with --dart-define=GEMINI_API_KEY=your_key.'
+        });
+      });
+      return;
+    }
 
     setState(() {
       _isLoading = true;

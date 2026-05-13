@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:io';
+import 'package:flutter/foundation.dart';
 
 import 'package:flutter_tflite/flutter_tflite.dart';
 import 'package:image_picker/image_picker.dart';
@@ -14,12 +14,23 @@ class ScannerScreen extends StatefulWidget {
 }
 
 class _ScannerScreenState extends State<ScannerScreen> {
-  File? filePath;
+  Uint8List? imageBytes;
   String label = '';
   double confidence = 0.0;
   String description = '';
 
+  static const Map<String, String> _diseaseDescriptions = {
+    'Gall Midge':
+        'Gall midge damage can deform crop tissue and reduce plant vigor. Remove affected parts where practical and consult a local agronomist for region-specific control.',
+    'Healthy':
+        'The crop looks healthy based on the selected image. Keep monitoring regularly and maintain good irrigation, nutrition, and field hygiene.',
+    'Sooty Mould':
+        'Sooty mould is commonly associated with honeydew from insects. Manage the underlying pest pressure and gently remove surface growth where possible.',
+  };
+
   Future<void> _tfLteInit() async {
+    if (kIsWeb) return;
+
     await Tflite.loadModel(
         model: "assets/model_unquant.tflite",
         labels: "assets/labels.txt",
@@ -37,11 +48,21 @@ class _ScannerScreenState extends State<ScannerScreen> {
 
     if (image == null) return;
 
-    var imageMap = File(image.path);
+    final bytes = await image.readAsBytes();
 
     setState(() {
-      filePath = imageMap;
+      imageBytes = bytes;
     });
+
+    if (kIsWeb) {
+      setState(() {
+        label = 'Preview only on web';
+        confidence = 0;
+        description =
+            'TensorFlow Lite scanning is available in the Android/iOS app build.';
+      });
+      return;
+    }
 
     var recognitions = await Tflite.runModelOnImage(
         path: image.path,
@@ -57,9 +78,9 @@ class _ScannerScreenState extends State<ScannerScreen> {
     }
     devtools.log(recognitions.toString());
     setState(() {
-      description = recognitions[0]['Description'].toString();
       confidence = (recognitions[0]['confidence'] * 100);
       label = recognitions[0]['label'].toString();
+      description = _diseaseDescriptions[label] ?? 'No description available.';
     });
   }
 
@@ -69,11 +90,21 @@ class _ScannerScreenState extends State<ScannerScreen> {
 
     if (image == null) return;
 
-    var imageMap = File(image.path);
+    final bytes = await image.readAsBytes();
 
     setState(() {
-      filePath = imageMap;
+      imageBytes = bytes;
     });
+
+    if (kIsWeb) {
+      setState(() {
+        label = 'Preview only on web';
+        confidence = 0;
+        description =
+            'TensorFlow Lite scanning is available in the Android/iOS app build.';
+      });
+      return;
+    }
 
     var recognitions = await Tflite.runModelOnImage(
         path: image.path,
@@ -91,6 +122,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
     setState(() {
       confidence = (recognitions[0]['confidence'] * 100);
       label = recognitions[0]['label'].toString();
+      description = _diseaseDescriptions[label] ?? 'No description available.';
     });
   }
 
@@ -127,8 +159,10 @@ class _ScannerScreenState extends State<ScannerScreen> {
 
   @override
   void dispose() {
+    if (!kIsWeb) {
+      Tflite.close();
+    }
     super.dispose();
-    Tflite.close();
   }
 
   @override
@@ -187,10 +221,10 @@ class _ScannerScreenState extends State<ScannerScreen> {
                               image: AssetImage('assets/upload.jpg'),
                             ),
                           ),
-                          child: filePath == null
+                          child: imageBytes == null
                               ? const Text('')
-                              : Image.file(
-                                  filePath!,
+                              : Image.memory(
+                                  imageBytes!,
                                   fit: BoxFit.fill,
                                 ),
                         ),

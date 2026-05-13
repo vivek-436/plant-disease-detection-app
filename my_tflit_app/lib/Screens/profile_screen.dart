@@ -5,15 +5,21 @@ class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _ProfileScreenState createState() => _ProfileScreenState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  TextEditingController emailController =
+  final TextEditingController emailController =
       TextEditingController(text: 'vivekmaurya00999@gmail.com');
-  TextEditingController addressController =
+  final TextEditingController addressController =
       TextEditingController(text: '----------------');
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    addressController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
